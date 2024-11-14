@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomButtom extends StatelessWidget {
-  CustomButtom({required this.onPress, required this.buttom_text});
+  CustomButtom({super.key, required this.onPress, required this.buttom_text});
   VoidCallback onPress;
   String buttom_text;
   @override
@@ -15,9 +15,9 @@ class CustomButtom extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
       ),
-      child: const Text(
-        'Login',
-        style: TextStyle(fontSize: 18, color: Colors.white),
+      child:  Text(
+        buttom_text,
+        style: TextStyle(fontSize: 18, color: Colors.white),    
       ),
     );
   }

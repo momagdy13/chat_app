@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFiled extends StatelessWidget {
-  CustomTextFiled({required this.icon, required this.place_holder});
+  CustomTextFiled(
+      {super.key, required this.icon, required this.place_holder, this.onChange});
 
   IconData? icon;
   String? place_holder;
-  
+  Function(String)? onChange;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: onChange,
       decoration: InputDecoration(
         hintText: '$place_holder',
         hintStyle: const TextStyle(color: Colors.white70),

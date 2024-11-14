@@ -1,12 +1,13 @@
 import 'package:chat_app/componets/custom_buttom.dart';
 import 'package:chat_app/componets/custom_text_filed.dart';
-import 'package:chat_app/screens/signup_screen.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
-  static String id = 'loginScreen';
-
+class SignupScreen extends StatelessWidget {
+  SignupScreen({super.key});
+  static String id = 'signUpScreen';
+  String? email;
+  String? password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +26,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
           ),
-          // Scrollable content on top of the background
+          // Scrollable content
           Center(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(16.0),
@@ -41,7 +42,6 @@ class LoginScreen extends StatelessWidget {
                   // App title
                   const Text(
                     'Scholar Chat',
-                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 24,
@@ -49,50 +49,62 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 30),
-                  // "Login" header
+                  // "Sign Up" header
                   const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'Login',
+                      'Sign Up',
                       style: TextStyle(color: Colors.white, fontSize: 30),
                     ),
                   ),
                   const SizedBox(height: 30),
                   // Email TextField
                   CustomTextFiled(
+                    onChange: (data) {
+                      email = data;
+                    },
                     icon: Icons.email,
                     place_holder: 'Enter Your Email',
                   ),
                   const SizedBox(height: 20),
                   // Password TextField
                   CustomTextFiled(
+                    onChange: (data) {
+                      password = data;
+                    },
                     icon: Icons.lock,
-                    place_holder: 'Enter Your Password',
+                    place_holder: "Enter your password",
                   ),
                   const SizedBox(height: 30),
-                  // Login Button
+                  // Register Button
                   CustomButtom(
-                    onPress: () {},
-                    buttom_text: 'Login',
+                    onPress: () async {
+                      // try {
+                      //   var auth = FirebaseAuth.instance;
+                      //   UserCredential user =
+                      //       await auth.createUserWithEmailAndPassword(
+                      //           email: email!, password: password!);
+                      // } catch (e) {
+                      //   print(e);
+                      // }
+                    },
+                    buttom_text: 'Register',
                   ),
                   const SizedBox(height: 20),
-                  // Sign Up navigation
+                  // Login link
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        "Don't have an account? ",
-                        style: TextStyle(
-                          color: Colors.white70,
-                          fontSize: 18,
-                        ),
+                        "Already have an account? ",
+                        style: TextStyle(color: Colors.white70, fontSize: 18),
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, SignupScreen.id);
+                          Navigator.pop(context);
                         },
                         child: const Text(
-                          "Sign Up",
+                          "Log in",
                           style: TextStyle(
                             color: Color.fromARGB(255, 0, 100, 181),
                             fontSize: 18,
