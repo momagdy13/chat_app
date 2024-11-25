@@ -6,16 +6,17 @@ class CustomButtom extends StatelessWidget {
   final bool isEnabled;
 
   const CustomButtom({
-    Key? key,
+    super.key,
     required this.onPress,
     required this.buttomText,
     this.isEnabled = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       // Disable button if isEnabled is false
+      
       onPressed: isEnabled ? onPress : null,
       style: ElevatedButton.styleFrom(
         backgroundColor: isEnabled

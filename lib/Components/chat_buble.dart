@@ -2,11 +2,12 @@ import 'package:chat_app/Constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class ChatBuble extends StatelessWidget {
-  ChatBuble({
+  const ChatBuble({
     super.key,
     required this.message,
     this.isSentByUser = false,
   });
+  
 
   final String message;
   final bool isSentByUser;
